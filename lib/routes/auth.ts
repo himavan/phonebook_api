@@ -5,7 +5,7 @@ export class Authenticate {
     public userController: AuthController = new AuthController();
 
     public routes(app): void {          
-        app.route('/')
+        app.route('/api/auth')
         .post(this.userController.getAuth);
     }
 

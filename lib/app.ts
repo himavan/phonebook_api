@@ -2,6 +2,7 @@
 import * as express from "express";
 import * as mongoose from "mongoose";
 import * as config from "config";
+import * as path from "path";
 
 import { Contacts } from "./routes/contact";
 import { Users } from "./routes/user";
@@ -38,6 +39,8 @@ class App {
         this.app.use(express.json());
         //support application/x-www-form-urlencoded post data
         this.app.use(express.urlencoded({ extended: false }));
+        this.app.set('view engine', 'pug');
+        this.app.set('views', path.join(__dirname, "views"))
 
         if (!config.get('jwtPrivateKey')) {
             console.error('FATAL ERROR: jwtPrivateKey is not defined.');

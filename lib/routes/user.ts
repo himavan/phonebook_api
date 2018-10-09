@@ -6,10 +6,10 @@ export class Users {
     public userController: UserController = new UserController();
 
     public routes(app): void {          
-        app.route('/me')
+        app.route('/api/me')
         .get(checkAuth,this.userController.getUser);
                  
-        app.route('/register')   
+        app.route('/api/register')   
         .post(this.userController.addNewUser);
     }
 }

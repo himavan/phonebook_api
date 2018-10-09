@@ -7,29 +7,30 @@ export class Contacts {
     public contactController: ContactController = new ContactController();
 
     public routes(app): void {          
-        app.route('/',checkAuth)
+        app.route('/')
         .get((req: Request, res: Response) => {            
-            res.status(200).send({
-                message: 'GET request successfulll!!!!'
-            })
+            // res.status(200).send({
+            //     message: 'GET request successfulll!!!!'
+            // })
+            res.status(200).render("./index.pug");
         }) 
         
         // Get all contacts by user           
-        app.route('/contacts') 
+        app.route('/api/contacts') 
         .get(checkAuth,this.contactController.getContacts);
         
-        app.route('/contact') 
+        app.route('/api/contact') 
         .post(checkAuth,this.contactController.addNewContact);
 
         // Specife Contact Detials
-        app.route('/contact/:contactId')
+        app.route('/api/contact/:contactId')
         .get(checkAuth,this.contactController.getContactDetails)
         .post(checkAuth,this.contactController.addNewContactNumber)
         .put(checkAuth,this.contactController.updateContactDetails)
         .delete(checkAuth,this.contactController.deleteContact);
 
         // Specife Contact Number
-        app.route('/contact/:contactId/:numberId')
+        app.route('/api/contact/:contactId/:numberId')
         .get(checkAuth,this.contactController.getContactNumber)
         .put(checkAuth,this.contactController.updateContactNumber)
         .delete(checkAuth,this.contactController.deleteContactNumber);

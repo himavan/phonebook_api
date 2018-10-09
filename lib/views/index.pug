@@ -1,0 +1,478 @@
+html
+    head
+        link(rel='stylesheet',href='https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css')
+        style
+            include style.css
+    body
+        div(class="content mdl-shadow--2dp")
+            div(class="content-head mdl-color--primary")
+                h1(class='') Phonebook API Reference!
+            div(class="content-body")
+                table(class="mdl-data-table mdl-js-data-table")
+                    thead
+                        tr 
+                            th(class="mdl-data-table__cell--non-numeric") API Name/Method
+                            th(class="mdl-data-table__cell--non-numeric") HTTP Method
+                            th(class="mdl-data-table__cell--non-numeric") HTTP Request
+                            th(class="mdl-data-table__cell--non-numeric") Description/Request/Response(Click on API to know more)
+                    tbody
+                        tr
+                            td(class="mdl-data-table__cell--non-numeric") API Info
+                            td(class="mdl-data-table__cell--non-numeric") GET
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /
+                            td(class="mdl-data-table__cell--non-numeric") Phonebook API Reference Guide!
+                        tr(onclick="toggle('one')")
+                            td(class="mdl-data-table__cell--non-numeric") Authenticate User
+                            td(class="mdl-data-table__cell--non-numeric") POST
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/auth
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                div 
+                                    span Description: 
+                                    span Authenticated for getting token to manage Contacts, logged user information.
+                                div#one.hide
+                                    div
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "email": "string", 
+                                                    |       "password": "string" 
+                                                    |   }
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string" 
+                                                    |   }
+                        tr(onclick="toggle('two')")
+                            td(class="mdl-data-table__cell--non-numeric") Register User
+                            td(class="mdl-data-table__cell--non-numeric") POST
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/register
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                div 
+                                    span Description: 
+                                    span Registering a new user and returns a token
+                                div#two.hide
+                                    div 
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "name": "string", 
+                                                    |       "email": "string", 
+                                                    |       "password": "string" 
+                                                    |   }
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string" 
+                                                    |   }
+                        tr(onclick="toggle('three')")
+                            td(class="mdl-data-table__cell--non-numeric") Get User
+                            td(class="mdl-data-table__cell--non-numeric") GET
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/me
+                            td(class="mdl-data-table__cell--non-numeric")
+                                div 
+                                    span Description: 
+                                    span Get User Details
+                                div#three.hide
+                                    div 
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                span Send token.
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string" 
+                                                    |   }
+                        tr(onclick="toggle('four')")
+                            td(class="mdl-data-table__cell--non-numeric") Get Contacts
+                            td(class="mdl-data-table__cell--non-numeric") GET
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/contacts
+                            td(class="mdl-data-table__cell--non-numeric")
+                                div 
+                                    span Description: 
+                                    span Get contacts belongs to the user.
+                                div#four.hide
+                                    div 
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                span Send token.
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   [{ 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string",
+                                                    |       "company": "string",
+                                                    |       "imgUrl": "string",
+                                                    |       "phone":[{
+                                                    |           "_id":"ObjectId",
+                                                    |           "type":"string",
+                                                    |           "code":"string",
+                                                    |           "number":"string",
+                                                    |        }],
+                                                    |       "added_by":"ObjectId"
+                                                    |   }]
+                        tr(onclick="toggle('five')")
+                            td(class="mdl-data-table__cell--non-numeric") Add New Contact
+                            td(class="mdl-data-table__cell--non-numeric") POST
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/contact
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                div 
+                                    span Description: 
+                                    span Add new contact by the user.
+                                div#five.hide
+                                    div
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                span Send token (token is required to do this operation).
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   { 
+                                                    |       "name": "string", 
+                                                    |       "email": "string",
+                                                    |       "company": "string",
+                                                    |       "imgUrl": "string",  //Optional
+                                                    |       "phone":[{
+                                                    |           "type":"string",
+                                                    |           "code":"string",
+                                                    |           "number":"string",
+                                                    |        }]
+                                                    |   }
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   [{ 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string",
+                                                    |       "company": "string",
+                                                    |       "imgUrl": "string",
+                                                    |       "phone":[{
+                                                    |           "_id":"ObjectId",
+                                                    |           "type":"string",
+                                                    |           "code":"string",
+                                                    |           "number":"string",
+                                                    |        }],
+                                                    |       "added_by":"ObjectId"
+                                                    |   }]
+                        tr(onclick="toggle('six')")
+                            td(class="mdl-data-table__cell--non-numeric") Get Contact Details by contactID
+                            td(class="mdl-data-table__cell--non-numeric") GET
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                span(class="mdl-chip")    
+                                    span(class="mdl-chip__text") /api/contact/:contactId
+                            td(class="mdl-data-table__cell--non-numeric") 
+                                div 
+                                    span Description: 
+                                    span Get contact by send customer id
+                                div#six.hide
+                                    div 
+                                        span Request:
+                                        div(class="code")  
+                                            pre
+                                                span Send token (token is required to do this operation).
+                                                span Send :contactID as parameter
+                                        
+                                    div 
+                                        span Response:
+                                        div(class="code")  
+                                            pre
+                                                code
+                                                    |   [{ 
+                                                    |       "_id": "ObjectId",
+                                                    |       "name": "string", 
+                                                    |       "email": "string",
+                                                    |       "company": "string",
+                                                    |       "imgUrl": "string",
+                                                    |       "phone":[{
+                                                    |           "_id":"ObjectId",
+                                                    |           "type":"string",
+                                                    |           "code":"string",
+                                                    |           "number":"string",
+                                                    |        }],
+                                                    |       "added_by":"ObjectId"
+                                                    |   }]
+                            tr(onclick="toggle('seven')")
+                                td(class="mdl-data-table__cell--non-numeric") Add New Number by contact id
+                                td(class="mdl-data-table__cell--non-numeric") POST
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Add new Phone number to any contact with ID
+                                    div#seven.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID as parameter
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   { 
+                                                        |       "phone":[{
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }]
+                                                        |   }
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }],
+                                                        |       "added_by":"ObjectId"
+                                                        |   }]
+                            tr(onclick="toggle('eight')")
+                                td(class="mdl-data-table__cell--non-numeric") Update Contact Details by contact ID
+                                td(class="mdl-data-table__cell--non-numeric") PUT
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Update Contact Details of any contact with ID
+                                    div#eight.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID as parameter
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   { 
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |   }
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }],
+                                                        |       "added_by":"ObjectId"
+                                                        |   }]
+                            tr(onclick="toggle('nine')")
+                                td(class="mdl-data-table__cell--non-numeric") Delete Contact
+                                td(class="mdl-data-table__cell--non-numeric") DELETE
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Delete Contact by ID
+                                    div#nine.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID as parameter
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }],
+                                                        |       "added_by":"ObjectId"
+                                                        |   }]
+                            tr(onclick="toggle('ten')")
+                                td(class="mdl-data-table__cell--non-numeric") Get phone number by contact ID and number ID
+                                td(class="mdl-data-table__cell--non-numeric") GET
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId/:numberId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Get phone number by contact ID and number ID
+                                    div#ten.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID & :numberID as parameters
+                                            
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }]
+                                                        |   }]  
+                            tr(onclick="toggle('eleven')")
+                                td(class="mdl-data-table__cell--non-numeric") Update Contact Number
+                                td(class="mdl-data-table__cell--non-numeric") PUT
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId/:numberId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Update Contact Number of any contact with contactID and numberId
+                                    div#eleven.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID & :numberID as parameters
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   { 
+                                                        |       "type":"string",
+                                                        |       "code":"string",
+                                                        |       "number":"string",
+                                                        |   }
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }],
+                                                        |       "added_by":"ObjectId"
+                                                        |   }]   
+                            tr(onclick="toggle('twelve')")
+                                td(class="mdl-data-table__cell--non-numeric") Delete Contact Number
+                                td(class="mdl-data-table__cell--non-numeric") DELETE
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    span(class="mdl-chip")    
+                                        span(class="mdl-chip__text") /api/contact/:contactId/:numberId
+                                td(class="mdl-data-table__cell--non-numeric") 
+                                    div 
+                                        span Description: 
+                                        span Delete Contact Number of any contact with contactID and numberId
+                                    div#twelve.hide
+                                        div 
+                                            span Request:
+                                            div(class="code")  
+                                                pre
+                                                    span Send token (token is required to do this operation).
+                                                    span Send :contactID & :numberID as parameters
+                                            
+                                        div 
+                                            span Response:
+                                            div(class="code")  
+                                                pre
+                                                    code
+                                                        |   [{ 
+                                                        |       "_id": "ObjectId",
+                                                        |       "name": "string", 
+                                                        |       "email": "string",
+                                                        |       "company": "string",
+                                                        |       "imgUrl": "string",
+                                                        |       "phone":[{
+                                                        |           "_id":"ObjectId",
+                                                        |           "type":"string",
+                                                        |           "code":"string",
+                                                        |           "number":"string",
+                                                        |        }],
+                                                        |       "added_by":"ObjectId"
+                                                        |   }]                                                                                        
+            div
+               footer Developed by 
+                    a(href="https://github.com/himavan") Himavan     
+        script
+            include script.js       
