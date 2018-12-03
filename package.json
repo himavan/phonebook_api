@@ -18,6 +18,7 @@
     "@types/node": "^10.11.4",
     "bcrypt": "^3.0.0",
     "config": "^2.0.1",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "joi": "^13.6.0",
     "joi-objectid": "^2.0.0",

@@ -1,4 +1,3 @@
-
 import * as express from "express";
 import * as mongoose from "mongoose";
 import * as config from "config";
@@ -16,29 +15,35 @@ class App {
     public authRoutes: Authenticate = new Authenticate();
     public mongoUrl: string = 'mongodb://localhost/contacts';
 
+   
+
     constructor() {
         this.app = express();
         this.config(); 
         this.contactsRoutes.routes(this.app);
         this.userRoutes.routes(this.app);
         this.authRoutes.routes(this.app);   
-        this.mongoSetup();        
+        this.mongoSetup();    
     }
 
+    
+
     private mongoSetup(): void{
-        try {
             mongoose.Promise = global.Promise;
-            mongoose.connect(this.mongoUrl,{ useNewUrlParser: true , createIndexes : true});   
-        } catch (error) {
-            console.log(`Mongo Connection Error ${error}` );
-        }
+            mongoose.connect(this.mongoUrl,{ useNewUrlParser: true , createIndexes : true})
+            .then(() => console.log('Connected to MongoDb...'))
+            .catch(err => console.error('Could not connect to MongoDb...'));   
     }
 
     private config(): void{
+
+        
+
         // support application/json type post data
         this.app.use(express.json());
+      
         //support application/x-www-form-urlencoded post data
-        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.set('view engine', 'pug');
         this.app.set('views', path.join(__dirname, "views"))
 

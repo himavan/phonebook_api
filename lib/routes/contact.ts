@@ -8,10 +8,11 @@ export class Contacts {
 
     public routes(app): void {          
         app.route('/')
-        .get((req: Request, res: Response) => {            
+        .get((req: Request, res: Response,next) => {            
             // res.status(200).send({
             //     message: 'GET request successfulll!!!!'
             // })
+           
             res.status(200).render("./index.pug");
         }) 
         
