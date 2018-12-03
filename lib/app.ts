@@ -45,7 +45,8 @@ class App {
         //support application/x-www-form-urlencoded post data
         this.app.use(express.urlencoded({ extended: true }));
         this.app.set('view engine', 'pug');
-        this.app.set('views', path.join(__dirname, "views"))
+        this.app.set('views', "views");
+        this.app.use(express.static("views"));
 
         if (!config.get('jwtPrivateKey')) {
             console.error('FATAL ERROR: jwtPrivateKey is not defined.');
