@@ -65,7 +65,8 @@ Steps to use the project.
     ```
 * It displays the documentaion of this API. Use this documentaion and play with API.
 
-![Doc]<img src="https://github.com/himavan/phonebook_api/blob/master/docs/documentation.png" height="300px"/>
+<img src="https://github.com/himavan/phonebook_api/blob/master/docs/documentation.png" height="300px"/>
+<img src="https://github.com/himavan/phonebook_api/blob/master/docs/documentation2.png" height="300px"/>
 
 ## Authors
 
